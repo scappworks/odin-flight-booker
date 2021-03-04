@@ -1,3 +1,7 @@
 <%= form_with url: flights_index_path, method: :get do |form|%>
-    <h1>this is the form</h1>
+    <h3>Search for flights</h3>
+
+    <% @airports = Airport.all.map { |airport| [airport.airport_code, airport.id] } %>
+    <%= form.label :departure_location %>
+    <%= form.select_tag(:departi, :departing_flights, Airport.all, :id) %>
 <% end %>
