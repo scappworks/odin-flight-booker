@@ -2,6 +2,24 @@
     <h3>Search for flights</h3>
 
     <% @airports = Airport.all.map { |airport| [airport.airport_code, airport.id] } %>
-    <%= form.label :departure_location %>
-    <%= form.select_tag(:departi, :departing_flights, Airport.all, :id) %>
+    <% @flights = Flight.all.map { |flight| [flight.start_time] } %>
+
+    <div>
+        <%= form.label :departure_location %> <br>
+        <%= select_tag(:departing_flights, options_for_select(@airports, selected: params[:departure_airport_id])) %>
+    </div>
+
+    <br>
+
+    <div>
+        <%= form.label :destination_location %> <br>
+        <%= select_tag(:destination_flights, options_for_select(@airports, selected: params[:destination_airport_id])) %>
+    </div>
+
+    <br>
+        
+    <div>
+        <%= form.label :date %> <br>
+        <%= select_tag(@flights, options_for_select(@flights, selected: params[:start_time])) %>
+    </div>
 <% end %>
