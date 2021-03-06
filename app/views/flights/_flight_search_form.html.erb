@@ -1,8 +1,10 @@
-<%= form_with url: flights_index_path, method: :get do |form|%>
+<%= form_with url: flights_index_path, method: :get do |form| %>
     <h3>Search for flights</h3>
 
     <% @airports = Airport.all.map { |airport| [airport.airport_code, airport.id] } %>
-    <% @flights = Flight.all.map { |flight| [flight.start_time] } %>
+    <% @flight_dates = Flight.all.map { |flight| [flight.flight_date.strftime("%m/%d/%Y")] } %>
+    <% @flight_times = Flight.all.map { |flight| [flight.flight_time.strftime("%I:%m%p")] } %>
+    <% @flights = Flight.all.map { |flight| [flight.id] } %>
 
     <div>
         <%= form.label :departure_location %> <br>
@@ -20,6 +22,13 @@
         
     <div>
         <%= form.label :date %> <br>
-        <%= select_tag(@flights, options_for_select(@flights, selected: params[:start_time])) %>
+        <%= select_tag(:flight_dates, options_for_select(@flight_dates, selected: params[:flight_date])) %>
+    </div>
+
+    <br>
+
+    <div>
+        <%= form.label :time %> <br>
+        <%= select_tag(:flight_times, options_for_select(@flight_times, selected: params[:flight_time])) %>
     </div>
 <% end %>
