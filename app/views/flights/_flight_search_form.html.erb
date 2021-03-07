@@ -31,4 +31,8 @@
         <%= form.label :time %> <br>
         <%= select_tag(:flight_times, options_for_select(@flight_times, selected: params[:flight_time])) %>
     </div>
+
+    <br>
+
+    <%= form.submit "choose flight" %>
 <% end %>
