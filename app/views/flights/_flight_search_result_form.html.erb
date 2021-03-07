@@ -1,0 +1,9 @@
+<h1>Search result form</h1>
+
+<% if @available_flights == [] %>
+    <p>No flights available</p>
+<% else %>
+    <%= @available_flights.each do |flight| %>
+        <%= flight.airport_code %>
+    <% end %>
+<% end %>

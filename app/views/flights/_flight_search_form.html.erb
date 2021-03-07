@@ -3,8 +3,9 @@
 
     <% @airports = Airport.all.map { |airport| [airport.airport_code, airport.id] } %>
     <% @flight_dates = Flight.all.map { |flight| [flight.flight_date.strftime("%m/%d/%Y")] } %>
-    <% @flight_times = Flight.all.map { |flight| [flight.flight_time.strftime("%I:%m%p")] } %>
+    <% @flight_times = Flight.all.map { |flight| [flight.flight_time.strftime("%I:%M%p")] } %>
     <% @flights = Flight.all.map { |flight| [flight.id] } %>
+    <% @passengers = [1,2,3,4] %>
 
     <div>
         <%= form.label :departure_location %> <br>
@@ -30,6 +31,13 @@
     <div>
         <%= form.label :time %> <br>
         <%= select_tag(:flight_times, options_for_select(@flight_times, selected: params[:flight_time])) %>
+    </div>
+
+    <br>
+
+    <div>
+        <%= form.label :passengers %> <br>
+        <%= select_tag(:passengers, options_for_select(@passengers))%>
     </div>
 
     <br>
