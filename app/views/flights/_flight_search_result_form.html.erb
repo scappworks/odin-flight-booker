@@ -4,6 +4,6 @@
     <p>No flights available</p>
 <% else %>
     <%= @available_flights.each do |flight| %>
-        <%= flight.airport_code %>
+        <%= flight %>
     <% end %>
 <% end %>

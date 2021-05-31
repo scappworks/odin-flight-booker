@@ -9,28 +9,28 @@
 
     <div>
         <%= form.label :departure_location %> <br>
-        <%= select_tag(:departing_flights, options_for_select(@airports, selected: params[:departure_airport_id])) %>
+        <%= select_tag(:departure_airport, options_for_select(@airports, selected: params[:departure_airport_id])) %>
     </div>
 
     <br>
 
     <div>
         <%= form.label :destination_location %> <br>
-        <%= select_tag(:destination_flights, options_for_select(@airports, selected: params[:destination_airport_id])) %>
+        <%= select_tag(:destination_airport, options_for_select(@airports, selected: params[:destination_airport_id])) %>
     </div>
 
     <br>
         
     <div>
         <%= form.label :date %> <br>
-        <%= select_tag(:flight_dates, options_for_select(@flight_dates, selected: params[:flight_date])) %>
+        <%= select_tag(:flight_date, options_for_select(@flight_dates, selected: params[:flight_date])) %>
     </div>
 
     <br>
 
     <div>
         <%= form.label :time %> <br>
-        <%= select_tag(:flight_times, options_for_select(@flight_times, selected: params[:flight_time])) %>
+        <%= select_tag(:flight_time, options_for_select(@flight_times, selected: params[:flight_time])) %>
     </div>
 
     <br>
