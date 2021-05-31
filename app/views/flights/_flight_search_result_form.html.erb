@@ -1,14 +1,22 @@
 <h1>Search result form</h1>
 
-<% if @available_flights == [] %>
-    <p>All Flights</p>
+<%= form_with url: flights_index_path, method: :get, local: true do |form| %>
+    <% if @available_flights == [] %>
+        <p>All Flights</p>
 
-    <% @flights.each do |flight| %>
-        <%= flight %>
-    <% end %>
-<% else %>
-    <% @available_flights.each do |flight| %>
+        <% @flights.each do |flight| %>
+        <div>
+        <%= form.radio_button :flight, "flight" %>
+            <%= flight %>
+        </div>
+        <% end %>
+    <% else %>
     <p>Results</p>
-        <%= flight.id %>
+        <% @available_flights.each do |flight| %>
+        <div>
+        <%= form.radio_button :flight, "flight" %>
+            <%= flight.id %>
+        </div>
+        <% end %>
     <% end %>
 <% end %>
